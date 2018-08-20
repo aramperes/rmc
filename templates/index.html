@@ -20,6 +20,13 @@
 
     <div id="vote-button">Slide to Vote</div>
 </div>
+<div id="leaderboard">
+    <a href="{{ url_for("main.leaderboard") }}">
+        <i class="far fa-chart-bar"></i>
+        <br>
+        Leaderboard
+    </a>
+</div>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -46,9 +53,11 @@
                 $("body").css("background-color", color);
 
                 if (output["lightText"]) {
+                    $("body").addClass("light");
                     $("#main").addClass("light");
                 } else {
                     $("#main").removeClass("light");
+                    $("body").removeClass("light");
                 }
             }
         )

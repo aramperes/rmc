@@ -7,6 +7,10 @@ body {
     -webkit-transition: background-color 500ms linear;
     -ms-transition: background-color 500ms linear;
     transition: background-color 500ms linear;
+    text-align: center;
+
+    font-family: sans-serif;
+    font-weight: bold;
 }
 
 #main {
@@ -14,11 +18,13 @@ body {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
-
-    font-family: sans-serif;
-    font-weight: bold;
     width: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+    #main {
+        width: 80%;
+    }
 }
 
 #main.light {
@@ -47,11 +53,24 @@ body {
     margin: 50px 0 0;
 }
 
+#slider::-webkit-slider-runnable-track {
+    width: 100%;
+    cursor: pointer;
+    background: black;
+    height: 3px;
+}
+
+.light #slider::-webkit-slider-runnable-track {
+    background: #fff;
+}
+
 #slider::-moz-range-track {
     width: 100%;
     cursor: pointer;
     background: black;
+    height: 3px;
 }
+
 .light #slider::-moz-range-track {
     background: #fff;
 }
@@ -64,6 +83,7 @@ body {
     border-radius: 50%;
     background: black;
     cursor: pointer;
+    transform: translateY(-11px);
 }
 
 .light #slider::-webkit-slider-thumb {
@@ -124,4 +144,27 @@ body {
 .light #vote-button:hover {
     background-color: white;
     color: black
+}
+
+#leaderboard {
+    color: black;
+    font-size: 1em;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.light #leaderboard {
+    color: white;
+}
+
+#leaderboard i {
+    font-size: 3em;
+    margin-left: 5px;
+}
+
+#leaderboard a, #leaderboard a:visited {
+    color: inherit;
+    text-decoration: none;
 }
