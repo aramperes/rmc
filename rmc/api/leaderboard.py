@@ -17,14 +17,16 @@ class LeaderboardResource(BaseResource):
 
         pipeline = r.pipeline()
         for color in colors:
-            pipeline.get(f"rmc:colors:{hex_color(color)}")
+            pipeline.get(f"rmc:score:{hex_color(color)}")
+            pipeline.get(f"rmc:count:{hex_color(color)}")
 
         scores = pipeline.execute()
 
         leaderboard = [
             {
                 "color": "#" + hex_color(colors[i]),
-                "score": int(scores[i].decode()) if scores[i] else 0,
+                "score": round((int(scores[i * 2].decode()) if scores[i * 2] else 0)
+                               / (int(scores[i * 2 + 1].decode()) if scores[i * 2 + 1] else 1)),
                 "lightText": is_dark(colors[i])
             }
             for i in range(len(colors))

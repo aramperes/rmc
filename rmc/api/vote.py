@@ -28,6 +28,7 @@ class VoteResource(BaseResource):
 
         pipeline = r.pipeline()
         pipeline.delete(redis_token)
-        pipeline.incr(f"rmc:colors:{color}", score)
+        pipeline.incr(f"rmc:score:{color}", score)
+        pipeline.incr(f"rmc:count:{color}", 1)
         pipeline.execute()
         return
