@@ -47,15 +47,6 @@ body {
     margin: 50px 0 0;
 }
 
-#slider::-webkit-slider-runnable-track {
-    width: 100%;
-    cursor: pointer;
-    background: black;
-}
-.light #slider::-webkit-slider-runnable-track {
-    background: #fff;
-}
-
 #slider::-moz-range-track {
     width: 100%;
     cursor: pointer;
