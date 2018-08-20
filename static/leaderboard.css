@@ -41,5 +41,13 @@ body {
 }
 
 #bars {
-    margin: 0.5em;
+    padding: 0.5em;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width: 768px) {
+    #bars {
+        width: 100%;
+    }
 }
