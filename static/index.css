@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #4286f4;
+
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+}
+
+#main {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    font-family: sans-serif;
+    font-weight: bold;
+    width: 50%;
+}
+
+#main.light {
+    color: white;
+}
+
+#title {
+    font-size: 2em;
+}
+
+#color-code {
+    font-size: 3em;
+}
+
+#slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: transparent;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+
+    margin: 50px 0 0;
+}
+
+#slider::-moz-range-track {
+    width: 100%;
+    cursor: pointer;
+    background: black;
+}
+
+.light #slider::-moz-range-track {
+    background: #fff;
+}
+
+#slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: black;
+    cursor: pointer;
+}
+
+.light #slider::-webkit-slider-thumb {
+    background: #fff;
+!important;
+}
+
+#slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: black;
+    cursor: pointer;
+}
+
+.light #slider::-moz-range-thumb {
+    background: #fff;
+!important;
+}
+
+#thumbs {
+    width: 100%;
+    font-size: 1em;
+}
+
+#thumbs-up {
+    float: right;
+}
+
+#thumbs-down {
+    float: left;
+}
+
+#vote-button {
+    margin-top: 40px;
+    display: inline-block;
+    padding: 10px;
+    border: solid 5px black;
+    border-radius: 10px;
+    font-size: 2em;
+    cursor: default;
+}
+
+#vote-button.enabled {
+    cursor: pointer;
+}
+
+#vote-button:hover {
+    background-color: black;
+    color: white;
+}
+
+.light #vote-button {
+    border-color: white;
+    color: white;
+}
+
+.light #vote-button:hover {
+    background-color: white;
+    color: black
+}

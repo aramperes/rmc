@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rateMyColor</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+<div id="main">
+    <div id="title">rateMyColor</div>
+    <div id="color-code">Loading...</div>
+
+    <input type="range" min="1" max="1000" value="500" id="slider">
+    <div id="thumbs">
+        <i class="far fa-thumbs-up" id="thumbs-up"></i>
+        <i class="far fa-thumbs-down" id="thumbs-down"></i>
+    </div>
+
+    <div id="vote-button">Slide to Vote</div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="application/javascript">
+
+    let voteToken = null;
+    let score = null;
+    let canVote = false;
+
+    // request color
+    nextColor();
+
+    function nextColor() {
+        $.getJSON(
+            "/api/color",
+            null,
+            (output) => {
+                let color = output["colorHex"];
+                voteToken = output["voteToken"];
+
+                $("#color-code").html(color);
+                $("#slider").val(500);
+                $("#vote-button").html("Slide to Vote");
+                $("body").css("background-color", color);
+
+                if (output["lightText"]) {
+                    $("#main").addClass("light");
+                } else {
+                    $("#main").removeClass("light");
+                }
+            }
+        )
+    }
+
+    $("#slider").on("input change", () => {
+        score = $("#slider").val();
+        $("#vote-button").html("Vote: " + score).addClass("enabled");
+    });
+
+    $("#vote-button").on("click", () => {
+        if (score) {
+            $("#vote-button").removeClass("enabled").html("Submitting...");
+            // submit
+            $.ajax(
+                "/api/vote",
+                {
+                    data: JSON.stringify(
+                        {
+                            "voteToken": voteToken,
+                            "score": Number(score)
+                        }
+                    ),
+                    contentType: 'application/json',
+                    type: 'POST'
+                }
+            ).done(() => {
+                score = null;
+                voteToken = null;
+                nextColor();
+            });
+        }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rateMyColor - Leaderboard</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" href="/static/leaderboard.css">
+</head>
+<body>
+
+<h1>Leaderboard</h1>
+
+<div id="bars">
+    <div id="loading">Loading...</div>
+{#    <div class="bar" style="width: 50%; background-color: red;">#}
+{#        #xdddd#}
+{#    </div>#}
+{#    <div class="bar" style="width: 40%; background-color: blue;">#}
+{#        #dab#}
+{#    </div>#}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="application/javascript">
+    $.getJSON(
+        "/api/leaderboard",
+        null,
+        (output) => {
+            let currentMax = 0;
+            let bars = $("#bars");
+            $("#loading").remove();
+            for (colorObj of output) {
+                let score = colorObj["score"];
+                if (score === 0) {
+                    break;
+                }
+                if (score > currentMax) {
+                    currentMax = score;
+                }
+                let lightText = colorObj["lightText"];
+                let colorHex = colorObj["color"];
+                bars.append($("<div class='bar'></div>")
+                    .css("width", (50 * (score / currentMax)) + "%")
+                    .css("background-color", colorHex)
+                    .html(colorHex + ": " + score));
+            }
+        }
+    );
+</script>
+</body>
+</html>
