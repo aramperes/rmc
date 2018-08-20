@@ -39,7 +39,7 @@
                 let lightText = colorObj["lightText"];
                 let colorHex = colorObj["color"];
                 bars.append($("<div class='bar'></div>")
-                    .css("width", (50 * (score / currentMax)) + "%")
+                    .css("width", (100 * (score / currentMax)) + "%")
                     .css("background-color", colorHex)
                     .html(colorHex + ": " + score));
             }
