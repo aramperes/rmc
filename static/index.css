@@ -151,8 +151,7 @@ body {
     font-size: 1em;
     position: fixed;
     bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 30px;
 }
 
 .light #leaderboard {
@@ -165,6 +164,21 @@ body {
 }
 
 #leaderboard a, #leaderboard a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+#credit {
+    color: black;
+    font-size: 1em;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}
+.light #credit {
+    color: white;
+}
+#credit a, #credit a:visited {
     color: inherit;
     text-decoration: none;
 }
