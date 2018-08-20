@@ -1,50 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rateMyColor - Leaderboard</title>
+{% extends "text_page.html" %}
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+{% block stylesheets %}
     <link rel="stylesheet" href="/static/leaderboard.css">
-</head>
-<body>
+{% endblock %}
 
-<div id="nav">
-    <a href="/" id="back"><i class="fas fa-arrow-left"></i></a>
-    <span id="title">Leaderboard</span>
-</div>
+{% block page_name %}Leaderboard{% endblock %}
+{% block page_title %}Leaderboard{% endblock %}
 
-<div id="bars">
-    <div id="loading">Loading...</div>
-</div>
+{% block page_content %}
+    <div id="bars" class="container">
+        <div id="loading">Loading...</div>
+    </div>
+{% endblock %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="application/javascript">
-    $.getJSON(
-        "/api/leaderboard",
-        null,
-        (output) => {
-            let currentMax = 0;
-            let bars = $("#bars");
-            $("#loading").remove();
-            for (colorObj of output) {
-                let score = colorObj["score"];
-                if (score === 0) {
-                    break;
+{% block scripts %}
+    <script type="application/javascript">
+        $.getJSON(
+            "/api/leaderboard",
+            null,
+            (output) => {
+                let currentMax = 0;
+                let bars = $("#bars");
+                $("#loading").remove();
+                for (colorObj of output) {
+                    let score = colorObj["score"];
+                    if (score === 0) {
+                        break;
+                    }
+                    if (score > currentMax) {
+                        currentMax = score;
+                    }
+                    let lightText = colorObj["lightText"];
+                    let colorHex = colorObj["color"];
+                    bars.append($("<div class='bar'></div>")
+                        .css("width", (100 * (score / currentMax)) + "%")
+                        .css("background-color", colorHex)
+                        .html(colorHex + ": " + score));
                 }
-                if (score > currentMax) {
-                    currentMax = score;
-                }
-                let lightText = colorObj["lightText"];
-                let colorHex = colorObj["color"];
-                bars.append($("<div class='bar'></div>")
-                    .css("width", (100 * (score / currentMax)) + "%")
-                    .css("background-color", colorHex)
-                    .html(colorHex + ": " + score));
             }
-        }
-    );
-</script>
-</body>
-</html>
+        );
+    </script>
+{% endblock %}

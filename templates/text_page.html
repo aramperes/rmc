@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rateMyColor - {% block page_title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" href="/static/text_page.css">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+
+<div id="nav">
+    <div class="container">
+        <a href="/" id="back"><i class="fas fa-arrow-left"></i></a>
+        <span id="title">{% block page_name %}{% endblock %}</span>
+    </div>
+</div>
+
+{% block page_content %}
+{% endblock %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

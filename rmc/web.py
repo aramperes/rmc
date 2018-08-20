@@ -10,6 +10,7 @@ from rmc.api.color import ColorResource
 from rmc.api.index import IndexResource
 from rmc.api.leaderboard import LeaderboardResource
 from rmc.api.vote import VoteResource
+from rmc.main.about import AboutView
 from rmc.main.base_view import BaseView
 from rmc.main.index import IndexView
 from rmc.main.leaderboard import LeaderboardView
@@ -50,6 +51,7 @@ class WebApp:
         # Main
         self.register_view(IndexView)
         self.register_view(LeaderboardView)
+        self.register_view(AboutView)
 
     def register_view(self, view_class: Type[BaseView]):
         class_setup = view_class.setup(self)

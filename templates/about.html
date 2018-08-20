@@ -1,0 +1,36 @@
+{% extends "text_page.html" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/static/about.css">
+{% endblock %}
+
+{% block page_name %}About{% endblock %}
+{% block page_title %}About{% endblock %}
+
+{% block page_content %}
+    <div class="container">
+        <h2>Author</h2>
+        <p>
+            <strong>rateMyColor</strong> was written by <a href="https://momoperes.ca" target="_blank">Aram Peres</a>.
+            The core functionality was completed in about 4 hours, and additional UI improvements were brought
+            subsequently.
+        </p>
+        <p>
+            The original idea was crafted by <a href="https://wavy.fm/profile/MattHey" target="_blank">Matei Cheong</a>.
+        </p>
+        <h2>Privacy</h2>
+        <p>
+            This website only collects anonymized data:
+        </p>
+        <ul>
+            <li>The score given to a color.</li>
+        </ul>
+        <p>
+            This website does not use any cookies to track users.
+        </p>
+        <h2>Copyright</h2>
+        <p>
+            &copy; 2018 Aram Peres.
+        </p>
+    </div>
+{% endblock %}
