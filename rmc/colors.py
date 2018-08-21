@@ -9,7 +9,7 @@ def get_week_colors(week=None, max_gen=256):
     rand = random.Random()
     rand.seed(seed)
     colors = [(rand.randint(0, 255), rand.randint(0, 255), rand.randint(0, 255))
-              for _ in range(max_gen)]
+              for _ in range(max_gen + 1)]
     return colors
 
 
