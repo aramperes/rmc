@@ -8,7 +8,12 @@
 {% block page_title %}About{% endblock %}
 
 {% block page_content %}
-    <div class="container">
+    <div class="container" id="about-content">
+        <h2>How it Works</h2>
+        <p>
+            256 colors are generated each week. The <a href="{{ url_for("main.leaderboard") }}">Leaderboard</a>
+            page sorts the results by the average score of each color.
+        </p>
         <h2>Author</h2>
         <p>
             <strong>rateMyColor</strong> was written by <a href="https://momoperes.ca" target="_blank">Aram Peres</a>.
@@ -16,7 +21,8 @@
             subsequently.
         </p>
         <p>
-            The original idea was crafted by <a href="https://wavy.fm/profile/MattHey" target="_blank">Matei Cheong</a>.
+            <a href="https://wavy.fm/profile/MattHey" target="_blank">Matei Cheong</a> gave the original idea for
+            a website about voting for colors.
         </p>
         <h2>Privacy</h2>
         <p>
