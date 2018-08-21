@@ -7,6 +7,7 @@ if __name__ == '__main__':
         host=os.environ.get("RMC_HOST", default="0.0.0.0"),
         port=int(os.environ.get("RMC_PORT", default=8080)),
         redis_host=os.environ.get("REDIS_HOST", default="127.0.0.1"),
-        redis_port=int(os.environ.get("REDIS_PORT", default=6379))
+        redis_port=int(os.environ.get("REDIS_PORT", default=6379)),
+        socket_host=os.environ.get("RMC_SOCKET_HOST", default="http://localhost:8082/voteCount")
     )
     web_app.run()

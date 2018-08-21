@@ -8,4 +8,4 @@ class IndexView(BaseView):
     url = "/"
 
     def get(self):
-        return render_template("index.html")
+        return render_template("index.html", socket_host=self.web_app.socket_host)

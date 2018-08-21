@@ -17,9 +17,11 @@ from rmc.main.leaderboard import LeaderboardView
 
 
 class WebApp:
-    def __init__(self, host="127.0.0.1", port=8080, redis_host="127.0.0.1", redis_port=6379):
+    def __init__(self, host="127.0.0.1", port=8080, redis_host="127.0.0.1", redis_port=6379,
+                 socket_host="http://localhost:8082/voteCount"):
         self.host = host
         self.port = port
+        self.socket_host = socket_host
         self.redis_pool = redis.ConnectionPool(host=redis_host, port=redis_port, db=0)
 
         root_path = os.getcwd()
